@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { ModalProvider } from '../contexts/ModalProvider';
+import { EmailModal } from '../components/EmailModal';
+import { AnalyticsTracker } from '../components/AnalyticsTracker';
 
 export const metadata: Metadata = {
   title: 'vocaloid',
@@ -17,7 +20,11 @@ export default function RootLayout({
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </head>
       <body>
-        <div id="root">{children}</div>
+        <AnalyticsTracker />
+        <ModalProvider>
+          <div id="root">{children}</div>
+          <EmailModal />
+        </ModalProvider>
       </body>
     </html>
   );

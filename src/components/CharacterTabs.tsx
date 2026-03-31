@@ -1,3 +1,4 @@
+"use client";
 import { useMemo, useState, memo } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import type { Vocaloid } from '../config/vocaloidData';
@@ -179,3 +180,4 @@ function CharacterTabsBase({ characterData }: CharacterTabsProps) {
 export const CharacterTabs = memo(CharacterTabsBase, (prev, next) => {
   return prev.characterData.name === next.characterData.name;
 });
+

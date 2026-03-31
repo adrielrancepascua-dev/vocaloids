@@ -1,3 +1,4 @@
+"use client";
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 export type VocaloidTrackName = 'World is Mine' | 'Kasane Territory' | 'Gucha Gucha Uruse';
@@ -261,4 +262,5 @@ export function useVocaloidAudio(): UseVocaloidAudioReturn {
     stop,
   };
 }
+
 

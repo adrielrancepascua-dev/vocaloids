@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, memo } from 'react';
 import { usePerformanceMonitor } from '../hooks/usePerformanceMonitor';
 
@@ -274,3 +275,4 @@ const AudioVisualizerCanvasBase = ({
 export const AudioVisualizerCanvas = memo(AudioVisualizerCanvasBase, (prev, next) => {
   return prev.activeCharacterName === next.activeCharacterName && prev.analyserNode === next.analyserNode;
 });
+

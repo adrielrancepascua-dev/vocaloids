@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef } from 'react';
 import { useInView } from 'motion/react';
 import { vocaloidData } from '../config/vocaloidData';
@@ -148,3 +149,4 @@ export function MainStage({ onCharacterTrackChange, analyserNode, setMuffleEffec
     </div>
   );
 }
+

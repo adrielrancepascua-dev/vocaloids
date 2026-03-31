@@ -1,3 +1,4 @@
+"use client";
 import { memo, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import type { CharacterTheme } from '../constants/theme';
@@ -76,3 +77,4 @@ function TerminalChatBase() {
 }
 
 export const TerminalChat = memo(TerminalChatBase);
+

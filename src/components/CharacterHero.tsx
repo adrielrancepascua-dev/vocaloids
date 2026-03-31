@@ -1,3 +1,4 @@
+"use client";
 import { memo, useState, useEffect } from 'react';
 import type { MouseEvent } from 'react';
 import { motion, useMotionValue, useTransform } from 'motion/react';

@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState, memo } from 'react';
 import { motion } from 'motion/react';
 import { ECGMonitor } from './ECGMonitor';
@@ -175,3 +176,4 @@ function LoadingScreenBase({ onLoadComplete, onStartExperience }: LoadingScreenP
 }
 
 export const LoadingScreen = memo(LoadingScreenBase);
+

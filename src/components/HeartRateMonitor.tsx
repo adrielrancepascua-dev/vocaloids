@@ -1,3 +1,4 @@
+"use client";
 import { memo, useEffect, useRef } from 'react';
 import { motion, useAnimationFrame, useMotionValue } from 'framer-motion';
 import type { CharacterTheme } from '../constants/theme';

@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState, useDeferredValue } from 'react';
 
 export function usePerformanceMonitor() {

@@ -1,11 +1,12 @@
+"use client";
 import { useCallback, useState, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'motion/react';
-import { VibeProvider } from './contexts/VibeProvider';
-import { LoadingScreen } from './components/LoadingScreen';
-import { MainStage } from './components/MainStage';
-import { CustomCursor } from './components/CustomCursor';
-import { useVocaloidAudio } from './hooks/useVocaloidAudio';
-import { TerminalChat } from './components/TerminalChat';
+import { VibeProvider } from '../contexts/VibeProvider';
+import { LoadingScreen } from '../components/LoadingScreen';
+import { MainStage } from '../components/MainStage';
+import { CustomCursor } from '../components/CustomCursor';
+import { useVocaloidAudio } from '../hooks/useVocaloidAudio';
+import { TerminalChat } from '../components/TerminalChat';
 import '@fontsource/inter-tight/800.css';
 import '@fontsource/inter-tight/900.css';
 
@@ -98,4 +99,5 @@ function App() {
   );
 }
 
-export default App;
+export default function Page() { return <App />; }
+

@@ -1,3 +1,4 @@
+"use client";
 import { memo, useEffect, useMemo, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { vocaloidData } from '../config/vocaloidData';
@@ -187,3 +188,4 @@ function CustomCursorBase() {
 }
 
 export const CustomCursor = memo(CustomCursorBase);
+

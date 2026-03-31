@@ -1,0 +1,3 @@
+module.exports=[37229,a=>{"use strict";var b=a.i(43633);a.s(["default",0,function({children:a}){return(0,b.jsxs)("html",{lang:"en",children:[(0,b.jsx)("head",{children:(0,b.jsx)("link",{rel:"icon",type:"image/svg+xml",href:"/favicon.svg"})}),(0,b.jsx)("body",{children:(0,b.jsx)("div",{id:"root",children:a})})]})},"metadata",0,{title:"vocaloid",description:"Vocaloid Interactive Portfolio"}])},8856,a=>{a.n(a.i(37229))}];
+
+//# sourceMappingURL=Downloads_vocaloid_src_app_layout_tsx_0byot3f._.js.map

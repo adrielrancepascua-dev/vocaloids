@@ -1,3 +1,4 @@
+"use client";
 import { memo } from 'react';
 import { motion } from 'motion/react';
 import type { CharacterTheme } from '../constants/theme';
@@ -67,3 +68,4 @@ function ECGMonitorBase({ theme, color = 'var(--primary-color)', width = '100%',
 }
 
 export const ECGMonitor = memo(ECGMonitorBase);
+

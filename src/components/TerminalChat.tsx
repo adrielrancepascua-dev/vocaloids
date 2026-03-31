@@ -54,7 +54,7 @@ function TerminalChatBase() {
   if (!activeCharacter) return null;
 
   return (
-    <div className="fixed bottom-8 right-8 z-[100] w-72 pointer-events-none mix-blend-difference font-inter-tight font-medium text-xs tracking-wider">
+    <div className="fixed bottom-[15vh] md:bottom-8 right-4 md:right-8 z-[100] w-64 md:w-72 pointer-events-none mix-blend-difference font-inter-tight font-medium text-[10px] md:text-xs tracking-wider">
       <AnimatePresence mode="popLayout">
         {visibleLogs.map((log, i) => (
           <motion.div

@@ -62,7 +62,7 @@ function CharacterSection({ data, index, total, isActive, analyserNode, onActiva
           characterData={data}
           alignment={index % 2 !== 0 ? 'right' : 'left'}
         />
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-80 flex flex-col items-center gap-2 pointer-events-none">
+        <div className="absolute bottom-[8vh] left-1/2 -translate-x-1/2 animate-bounce opacity-80 flex flex-col items-center gap-2 pointer-events-none hidden md:flex">
           <span className="text-xs uppercase tracking-[0.3em] font-medium font-inter-tight opacity-70">Scroll Details</span>
           <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
         </div>

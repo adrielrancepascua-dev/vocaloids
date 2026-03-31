@@ -81,6 +81,7 @@ function CharacterTabsBase({ characterData }: CharacterTabsProps) {
                 {characterData.loreMetric}
               </p>
               <p className="text-base md:text-3xl leading-relaxed text-zinc-200 max-w-3xl font-light">{characterData.bio}</p>
+            </div>
           )}
 
           {activeTab === 'core-stats' && (

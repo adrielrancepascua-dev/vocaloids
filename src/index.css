@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+:root {
+  --primary-color: #39C5BB;
+  --secondary-gradient: linear-gradient(45deg, #39C5BB, #008888);
+  --custom-box-shadow: 0 4px 20px rgba(57, 197, 187, 0.4);
+}
+
+.font-inter-tight {
+  font-family: 'Inter Tight', sans-serif;
+}
+
+body.hide-cursor, body.hide-cursor * {
+  cursor: none !important;
+}

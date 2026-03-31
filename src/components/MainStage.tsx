@@ -71,7 +71,7 @@ function CharacterSection({ data, index, total, isActive, analyserNode, onActiva
       {/* Screen 2: Tabs Data */}
       <div
         ref={tabsRef}
-        className="h-[100dvh] w-full shrink-0 snap-start snap-always relative flex flex-col items-center justify-center p-4 md:px-8 bg-black/40 bg-cover bg-center bg-no-repeat bg-fixed py-24"
+        className="h-[100dvh] w-full shrink-0 snap-start snap-always relative flex flex-col items-center justify-center p-4 md:px-8 bg-black/40 bg-cover bg-center bg-no-repeat bg-fixed pb-32 md:pb-24 pt-16 md:pt-24"
         style={{ backgroundImage: `url(${data.bgImage})` }}
       >
         <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
@@ -82,10 +82,10 @@ function CharacterSection({ data, index, total, isActive, analyserNode, onActiva
         {index < total - 1 && (
           <button
             onClick={onNext}
-            className="absolute bottom-12 group rounded-full border border-white/20 bg-black/40 px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] text-white/70 backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:text-white hover:border-white/50 hover:px-12"
+            className="absolute bottom-6 md:bottom-12 group rounded-full border border-white/20 bg-black/40 px-6 py-3 md:px-10 md:py-5 text-[10px] md:text-sm font-bold uppercase tracking-[0.2em] text-white/70 backdrop-blur-md transition-all duration-300 hover:bg-white/10 hover:text-white hover:border-white/50 hover:px-12"
           >
-            <span className="relative z-10 flex items-center gap-4">
-              Next Character <span className="text-xl group-hover:translate-y-1 transition-transform duration-300">↓</span>
+            <span className="relative z-10 flex items-center gap-2 md:gap-4">
+              Next Character <span className="text-base md:text-xl group-hover:translate-y-1 transition-transform duration-300">↓</span>
             </span>
           </button>
         )}

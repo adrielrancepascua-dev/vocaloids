@@ -49,10 +49,10 @@ function CharacterSection({ data, index, total, isActive, analyserNode, onActiva
   }, [isActive, isTabsInView, setMuffleEffect]);
 
   return (
-    <section ref={sectionRef} id={`character-${index}`} className="relative flex flex-col w-full min-h-[200vh]">
+    <section ref={sectionRef} id={`character-${index}`} className="relative flex flex-col w-full min-h-[200dvh]">
       {/* Screen 1: Hero Profile */}
       <div
-        className="h-screen w-full shrink-0 snap-start snap-always relative flex items-center justify-center p-8"
+        className="h-[100dvh] w-full shrink-0 snap-start snap-always relative flex items-center justify-center overflow-x-hidden p-0 md:p-8"
       >
         {/* Render Canvas ONLY when this character is conceptually active or in view to save resources */}
         {isInView && (
@@ -71,7 +71,7 @@ function CharacterSection({ data, index, total, isActive, analyserNode, onActiva
       {/* Screen 2: Tabs Data */}
       <div
         ref={tabsRef}
-        className="h-screen w-full shrink-0 snap-start snap-always relative flex flex-col items-center justify-center px-8 bg-black/40 bg-cover bg-center bg-no-repeat bg-fixed"
+        className="h-[100dvh] w-full shrink-0 snap-start snap-always relative flex flex-col items-center justify-center p-4 md:px-8 bg-black/40 bg-cover bg-center bg-no-repeat bg-fixed py-24"
         style={{ backgroundImage: `url(${data.bgImage})` }}
       >
         <div className="absolute inset-0 bg-black/70 backdrop-blur-md" />
@@ -120,7 +120,7 @@ export function MainStage({ onCharacterTrackChange, analyserNode, setMuffleEffec
   return (
     <div
       ref={containerRef}
-      className="h-screen w-full snap-y snap-mandatory overflow-y-auto scroll-smooth"
+      className="h-[100dvh] w-full snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth"
       style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
     >
       <style>{`

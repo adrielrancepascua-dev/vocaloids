@@ -51,19 +51,19 @@ function CharacterHeroBase({ characterData, alignment, onClick }: CharacterHeroP
   const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
 
   return (
-    <div 
-      className={`flex items-center w-full mx-auto h-full gap-16 ${
-        alignment === 'right' ? 'flex-row-reverse' : 'flex-row'
+    <div
+      className={`flex items-center justify-center w-full mx-auto h-full gap-8 md:gap-16 flex-col md:flex-row ${
+        alignment === 'right' ? 'md:flex-row-reverse' : ''
       }`}
     >
       {/* Interactive Image Container */}
-      <div 
-        className="relative flex-1 cursor-pointer group flex justify-center items-center h-full"
+      <div
+        className="relative flex-1 cursor-pointer group flex justify-center items-center h-[50%] md:h-full w-full"
         onMouseMove={handleMouseMove}
         onClick={handleClick}
       >
         <motion.div
-          animate={{ 
+          animate={{
             y: [-15, 15],
             scale: isPulsing ? [1, 1.2, 1] : 1
           }}
@@ -79,14 +79,14 @@ function CharacterHeroBase({ characterData, alignment, onClick }: CharacterHeroP
             }
           }}
           whileHover={{ scale: 1.05 }}
-          className="relative w-[360px] h-[550px] md:w-[480px] md:h-[700px] rounded-[3rem] overflow-hidden shadow-2xl bg-zinc-800/30"
+          className="relative w-[75vw] h-[45vh] md:w-[480px] md:h-[700px] max-w-[380px] md:max-w-none rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-zinc-800/30"
           style={{
             boxShadow: `0 0 80px ${characterData.colors.primary}30`
           }}
         >
           {/* Spotlight overlay effect */}
           <motion.div
-            className="absolute inset-0 z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            className="absolute inset-0 z-20 pointer-events-none opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 hidden md:block"
             style={{
               background: `${characterData.colors.primary}60`,
               WebkitMaskImage: maskImage,
@@ -106,10 +106,10 @@ function CharacterHeroBase({ characterData, alignment, onClick }: CharacterHeroP
       </div>
 
       {/* Typography */}
-      <div className="flex-1 flex flex-col justify-center translate-y-[-5%] px-12">
-        <div className="relative">
-          <motion.h2 
-            className="text-[120px] md:text-[160px] font-black uppercase tracking-tighter leading-[0.85] font-inter-tight relative z-10"
+      <div className="flex-1 flex flex-col justify-center translate-y-0 md:translate-y-[-5%] px-4 sm:px-8 md:px-12 text-center md:text-left mt-2 md:mt-0 w-full items-center md:items-start">
+        <div className="relative inline-block text-left">
+          <motion.h2
+            className="text-[64px] sm:text-[90px] md:text-[160px] font-black uppercase tracking-tighter leading-[0.85] font-inter-tight relative z-10"
             style={{ color: characterData.colors.primary }}
             initial={{ opacity: 0, x: alignment === 'left' ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -130,7 +130,7 @@ function CharacterHeroBase({ characterData, alignment, onClick }: CharacterHeroP
           {triggerGlitch && (
             <>
               <motion.div
-                className="absolute top-0 left-0 text-[120px] md:text-[160px] font-black uppercase tracking-tighter leading-[0.85] font-inter-tight"
+                className="absolute top-0 left-0 text-[64px] sm:text-[90px] md:text-[160px] font-black uppercase tracking-tighter leading-[0.85] font-inter-tight"
                 style={{ color: '#FF0000', opacity: 0.8, zIndex: 11 }}
                 initial={{ x: -4, y: -4 }}
                 animate={{ x: 0, y: 0 }}
@@ -142,9 +142,9 @@ function CharacterHeroBase({ characterData, alignment, onClick }: CharacterHeroP
                   {lastName}
                 </span>
               </motion.div>
-              
+
               <motion.div
-                className="absolute top-0 left-0 text-[120px] md:text-[160px] font-black uppercase tracking-tighter leading-[0.85] font-inter-tight"
+                className="absolute top-0 left-0 text-[64px] sm:text-[90px] md:text-[160px] font-black uppercase tracking-tighter leading-[0.85] font-inter-tight"
                 style={{ color: '#0000FF', opacity: 0.8, zIndex: 12 }}
                 initial={{ x: 4, y: 4 }}
                 animate={{ x: 0, y: 0 }}
@@ -159,10 +159,10 @@ function CharacterHeroBase({ characterData, alignment, onClick }: CharacterHeroP
             </>
           )}
         </div>
-        
+
         {/* Tagline / Subtitle */}
         <motion.p
-          className="mt-8 text-2xl md:text-3xl font-medium tracking-[0.3em] uppercase text-white/70"
+          className="mt-4 md:mt-8 text-lg sm:text-2xl md:text-3xl font-medium tracking-[0.3em] uppercase text-white/70"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.5 }}

@@ -114,11 +114,11 @@ function CharacterTabsBase({ characterData }: CharacterTabsProps) {
           )}
 
           {activeTab === 'influences' && (
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
               {characterData.influences.map((influence) => (
                 <span
                   key={influence}
-                  className="rounded-full border-2 px-8 py-4 text-xl font-bold uppercase tracking-[0.18em]"
+                  className="rounded-full border-2 px-6 py-3 md:px-8 md:py-4 text-sm md:text-xl font-bold uppercase tracking-[0.18em]"
                   style={{
                     borderColor: 'var(--primary-color)',
                     color: 'var(--primary-color)',
@@ -140,13 +140,13 @@ function CharacterTabsBase({ characterData }: CharacterTabsProps) {
 
                 return (
                   <li key={`${song.title}-${song.year}`} className="space-y-4">
-                    <div className="flex items-end justify-between gap-4 border-b border-white/10 pb-2">
-                      <p className="text-2xl font-bold text-zinc-100 uppercase tracking-wider">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 md:gap-4 border-b border-white/10 pb-2">
+                      <p className="text-lg md:text-2xl font-bold text-zinc-100 uppercase tracking-wider">
                         {song.title}
-                        <span className="ml-3 text-lg text-zinc-500 font-normal">({song.year})</span>
+                        <span className="ml-2 md:ml-3 text-sm md:text-lg text-zinc-500 font-normal">({song.year})</span>
                       </p>
-                      <p className="text-xl font-medium text-zinc-300">
-                        {formatPlayCount(song.playCount)} <span className="text-sm text-zinc-500 uppercase">plays</span>
+                      <p className="text-base md:text-xl font-medium text-zinc-300">
+                        {formatPlayCount(song.playCount)} <span className="text-xs md:text-sm text-zinc-500 uppercase">plays</span>
                       </p>
                     </div>
 

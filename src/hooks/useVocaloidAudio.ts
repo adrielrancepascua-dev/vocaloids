@@ -213,7 +213,21 @@ export function useVocaloidAudio(): UseVocaloidAudioReturn {
   }, []);
 
   useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (audioContextRef.current?.state === 'running') {
+          void audioContextRef.current.suspend();
+        }
+      } else {
+        if (audioContextRef.current?.state === 'suspended') {
+          void audioContextRef.current.resume();
+        }
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       (Object.keys(TRACKS) as VocaloidTrackName[]).forEach((track) => {
         const nodes = trackNodesRef.current[track];
         if (nodes) {
@@ -247,3 +261,4 @@ export function useVocaloidAudio(): UseVocaloidAudioReturn {
     stop,
   };
 }
+

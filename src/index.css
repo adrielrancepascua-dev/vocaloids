@@ -13,3 +13,11 @@
 body.hide-cursor, body.hide-cursor * {
   cursor: none !important;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

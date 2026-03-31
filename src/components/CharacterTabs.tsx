@@ -73,7 +73,7 @@ function CharacterTabsBase({ characterData }: CharacterTabsProps) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.24, ease: 'easeOut' }}
-          className="pt-12 w-full flex justify-center text-center"
+          className="pt-6 md:pt-12 w-full flex justify-center text-center max-h-[55dvh] md:max-h-none overflow-y-auto no-scrollbar pb-12 md:pb-0"
         >
           {activeTab === 'autobiography' && (
             <div className="flex flex-col items-center gap-4 md:gap-6 px-4">

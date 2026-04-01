@@ -1,8 +1,12 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
+import Script from 'next/script';
 import { notFound } from 'next/navigation';
 import { fetchSongBySlug } from '../../../sanity/client';
+import { createSongSchema, createBreadcrumbSchema } from '@/lib/jsonld';
 import { BackButton } from './BackButton';
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://vocaloidportfolio.vercel.app';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -14,9 +18,42 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!song) return { title: 'Song Not Found' };
 
+  const songUrl = `${baseUrl}/song/${song.slug}`;
+  const ogImage = song.coverImage?.startsWith('http') ? song.coverImage : `${baseUrl}${song.coverImage}`;
+
   return {
-    title: `${song.title} | ${song.vocaloidName} Archive`,
-    description: song.description,
+    metadataBase: new URL(baseUrl),
+    title: `${song.title} by ${song.vocaloidName}`,
+    description: song.description || `Listen to ${song.title} by ${song.vocaloidName}`,
+    keywords: [song.title, song.vocaloidName, 'Vocaloid', 'Music', 'Singing Synthesis', song.tags?.join(', ') || ''].filter(Boolean),
+    authors: [{ name: song.producer || song.vocaloidName }],
+    openGraph: {
+      type: 'music.song',
+      url: songUrl,
+      title: `${song.title} by ${song.vocaloidName}`,
+      description: song.description,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: song.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${song.title} by ${song.vocaloidName}`,
+      description: song.description,
+      images: [ogImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: songUrl,
+    },
   };
 }
 
@@ -28,25 +65,38 @@ export default async function SongPage({ params }: Props) {
     notFound();
   }
 
-  // Generate MusicRecording JSON-LD for SEO
-  const jsonLd: any = {
-    "@context": "https://schema.org",
-    "@type": "MusicRecording",
-    "name": song.title,
-    "byArtist": {
-      "@type": "MusicGroup",
-      "name": song.vocaloidName
-    },
-    "duration": `PT${song.duration.replace(':', 'M')}S`,
-    "datePublished": song.releaseDate,
-    "image": song.coverImage
-  };
+  // Generate comprehensive JSON-LD schemas
+  const songSchema = createSongSchema(
+    song.title,
+    song.description,
+    song.vocaloidName,
+    song.coverImage,
+    baseUrl,
+    song.slug,
+    song.duration,
+    song.releaseDate
+  );
+
+  const breadcrumbSchema = createBreadcrumbSchema(
+    [
+      { name: 'Home', url: baseUrl },
+      { name: song.vocaloidName, url: `${baseUrl}/character/${song.vocaloidSlug}` },
+      { name: song.title },
+    ],
+    baseUrl
+  );
 
   return (
     <>
-      <script
+      <Script
+        id="song-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(songSchema) }}
+      />
+      <Script
+        id="breadcrumb-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <div className="min-h-screen bg-zinc-950 text-white font-inter-tight p-6 md:p-12 pt-24 selection:bg-[#39C5BB] selection:text-black">
         <BackButton />

@@ -14,6 +14,7 @@ export type Vocaloid = {
     title: string;
     playCount: number;
     year: number;
+    slug?: string;
   }[];
   stats: {
     age: number | string;
@@ -52,9 +53,9 @@ export const vocaloidData: Vocaloid[] = [
     uiSignature: "Teal, neon glow, digital pulse visualizers.",
     theme: "miku",
     songs: [
-      { title: "World is Mine (ryo)", playCount: 15400000, year: 2008 },
-      { title: "Tell Your World (kz)", playCount: 12000000, year: 2012 },
-      { title: "Mesmerizer (Satsuki)", playCount: 25000000, year: 2024 }
+      { title: "World is Mine (ryo)", playCount: 15400000, year: 2008, slug: "world-is-mine" },
+      { title: "Tell Your World (kz)", playCount: 12000000, year: 2012, slug: "tell-your-world" },
+      { title: "Mesmerizer (Satsuki)", playCount: 25000000, year: 2024, slug: "mesmerizer" }
     ],
     audioSrc: "/audio/miku.mp3",
     baseImage: "/images/miku_base.png",
@@ -82,9 +83,9 @@ export const vocaloidData: Vocaloid[] = [
     uiSignature: "Industrial Red, drill-hair geometry, glitch overlays.",
     theme: "teto",
     songs: [
-      { title: "Liar Dancer (Masarada)", playCount: 5000000, year: 2024 },
-      { title: "Override (Yoshida Yasei)", playCount: 20000000, year: 2023 },
-      { title: "Ochame Kinou", playCount: 30000000, year: 2010 }
+      { title: "Liar Dancer (Masarada)", playCount: 5000000, year: 2024, slug: "liar-dancer" },
+      { title: "Kasane Territory", playCount: 20000000, year: 2010, slug: "kasane-territory" },
+      { title: "Ochame Kinou", playCount: 30000000, year: 2010, slug: "ochame-kinou" }
     ],
     audioSrc: "/audio/teto.mp3",
     baseImage: "/images/teto_base.png",
@@ -112,9 +113,9 @@ export const vocaloidData: Vocaloid[] = [
     uiSignature: "Safety Yellow, flip-phone motifs, low-battery icons.",
     theme: "neru",
     songs: [
-      { title: "Stop Nagging Me! (Owata-P)", playCount: 4500000, year: 2008 },
-      { title: "Triple Baka", playCount: 22000000, year: 2008 },
-      { title: "Tsumanne?", playCount: 3000000, year: 2009 }
+      { title: "Stop Nagging Me! (Owata-P)", playCount: 4500000, year: 2008, slug: "stop-nagging-me" },
+      { title: "Gucha Gucha Uruse", playCount: 22000000, year: 2012, slug: "gucha-gucha-uruse" },
+      { title: "Tsumanne?", playCount: 3000000, year: 2009, slug: "tsumanne" }
     ],
     audioSrc: "/audio/neru.mp3",
     baseImage: "/images/neru_base.png",

@@ -14,7 +14,7 @@ import { CharacterTabs } from './CharacterTabs';
 const CHARACTER_TO_TRACK: Record<CharacterTheme, VocaloidTrackName> = {
   miku: 'World is Mine',
   teto: 'Kasane Territory',
-  neru: 'Gucha Gucha Uruse',
+  neru: 'Stop Nagging Me',
 };
 
 interface SectionProps {

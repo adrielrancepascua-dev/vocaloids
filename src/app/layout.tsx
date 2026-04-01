@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { ModalProvider } from '../contexts/ModalProvider';
-import { EmailModal } from '../components/EmailModal';
 import { AnalyticsTracker } from '../components/AnalyticsTracker';
 
 export const metadata: Metadata = {
@@ -21,10 +19,7 @@ export default function RootLayout({
       </head>
       <body>
         <AnalyticsTracker />
-        <ModalProvider>
-          <div id="root">{children}</div>
-          <EmailModal />
-        </ModalProvider>
+        <div id="root">{children}</div>
       </body>
     </html>
   );

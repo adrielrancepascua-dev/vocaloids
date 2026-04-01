@@ -22,18 +22,19 @@ export async function fetchSongBySlug(slug: string) {
   
   // Real GROQ query when Sanity is connected
   return client.fetch(
-    \*[_type == "song" && slug.current == \][0]{
+    `*[_type == "song" && slug.current == $slug][0]{
       "slug": slug.current,
       title,
       description,
       "vocaloidName": vocaloid->name,
       "vocaloidSlug": vocaloid->slug.current,
       audioUrl,
+      embedUrl,
       "coverImage": coverImage.asset->url,
       releaseDate,
       duration,
       tags
-    }\,
+    }`,
     { slug }
   );
 }

@@ -8,6 +8,12 @@ export default {
     { name: 'description', title: 'Description', type: 'text' },
     { name: 'vocaloid', title: 'Vocaloid', type: 'reference', to: [{ type: 'character' }] },
     { name: 'audioUrl', title: 'Audio URL', type: 'url' },
+    { 
+      name: 'embedUrl', 
+      title: 'Embed URL', 
+      type: 'url',
+      description: 'YouTube or other embed URL for streaming the song'
+    },
     { name: 'coverImage', title: 'Cover Image', type: 'image', options: { hotspot: true } },
     { name: 'releaseDate', title: 'Release Date', type: 'date' },
     { name: 'duration', title: 'Duration', type: 'string' },

@@ -1,6 +1,7 @@
 "use client";
 import { useMemo, useState, memo } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import Link from 'next/link';
 import type { Vocaloid } from '../config/vocaloidData';
 
 import { ECGMonitor } from './ECGMonitor';
@@ -142,10 +143,18 @@ function CharacterTabsBase({ characterData }: CharacterTabsProps) {
                 return (
                   <li key={`${song.title}-${song.year}`} className="space-y-4">
                     <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 md:gap-4 border-b border-white/10 pb-2">
-                      <p className="text-lg md:text-2xl font-bold text-zinc-100 uppercase tracking-wider">
-                        {song.title}
-                        <span className="ml-2 md:ml-3 text-sm md:text-lg text-zinc-500 font-normal">({song.year})</span>
-                      </p>
+                      <div className="flex items-center gap-3">
+                        {song.slug ? (
+                          <Link href={`/song/${song.slug}`} className="text-lg md:text-2xl font-bold text-zinc-100 uppercase tracking-wider hover:text-[#39C5BB] transition-colors decoration-[#39C5BB] underline-offset-4 hover:underline">
+                            {song.title}
+                          </Link>
+                        ) : (
+                          <p className="text-lg md:text-2xl font-bold text-zinc-100 uppercase tracking-wider">
+                            {song.title}
+                          </p>
+                        )}
+                        <span className="text-sm md:text-lg text-zinc-500 font-normal">({song.year})</span>
+                      </div>
                       <p className="text-base md:text-xl font-medium text-zinc-300">
                         {formatPlayCount(song.playCount)} <span className="text-xs md:text-sm text-zinc-500 uppercase">plays</span>
                       </p>

@@ -1,7 +1,7 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-export type VocaloidTrackName = 'World is Mine' | 'Kasane Territory' | 'Gucha Gucha Uruse';
+export type VocaloidTrackName = 'World is Mine' | 'Kasane Territory' | 'Stop Nagging Me';
 
 type TrackConfig = {
   src: string;
@@ -28,7 +28,7 @@ const LINEAR_CROSSFADE_SECONDS = 1.2;
 const TRACKS: Record<VocaloidTrackName, TrackConfig> = {
   'World is Mine': { src: '/audio/miku.mp3' },
   'Kasane Territory': { src: '/audio/teto.mp3' },
-  'Gucha Gucha Uruse': { src: '/audio/neru.mp3' },
+  'Stop Nagging Me': { src: '/audio/neru.mp3' },
 };
 
 export function useVocaloidAudio(): UseVocaloidAudioReturn {

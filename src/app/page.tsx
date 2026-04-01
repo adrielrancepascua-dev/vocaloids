@@ -12,6 +12,7 @@ import '@fontsource/inter-tight/900.css';
 
 function App() {
   const [unlocked, setUnlocked] = useState(false);
+  const [pendingTrack, setPendingTrack] = useState<ReturnType<typeof useVocaloidAudio>["activeTrack"]>(null);
   const [easterEggActive, setEasterEggActive] = useState(false);
   const { switchTrack, startExperience, analyserNode, setMuffleEffect, setEasterEggMode } = useVocaloidAudio();
   const konamiRef = useRef<string>("");
@@ -62,17 +63,36 @@ function App() {
   const handleLoadingComplete = useCallback(async () => {
     // Wait for the track to switch and then unlock so MainStage doesn't conflict immediately
     await switchTrack('World is Mine');
+    sessionStorage.setItem('vocaloid_unlocked', 'true');
     setUnlocked(true);
   }, [switchTrack]);
+
+  useEffect(() => {
+    // If returning from another page, skip the loading screen entirely.
+    if (typeof window !== 'undefined' && sessionStorage.getItem('vocaloid_unlocked')) {
+      startExperience().then(() => {
+        setUnlocked(true);
+      }).catch(console.error);
+    }
+  }, [startExperience]);
 
   const handleCharacterTrackChange = useCallback(
     async (track: ReturnType<typeof useVocaloidAudio>["activeTrack"]) => {      
       if (unlocked && track) {
         await switchTrack(track);
+      } else if (!unlocked && track) {
+        setPendingTrack(track);
       }
     },
     [switchTrack, unlocked],
   );
+
+  useEffect(() => {
+    if (unlocked && pendingTrack) {
+      switchTrack(pendingTrack);
+      setPendingTrack(null);
+    }
+  }, [unlocked, pendingTrack, switchTrack]);
 
   return (
     <VibeProvider>

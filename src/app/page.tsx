@@ -63,18 +63,8 @@ function App() {
   const handleLoadingComplete = useCallback(async () => {
     // Wait for the track to switch and then unlock so MainStage doesn't conflict immediately
     await switchTrack('World is Mine');
-    sessionStorage.setItem('vocaloid_unlocked', 'true');
     setUnlocked(true);
   }, [switchTrack]);
-
-  useEffect(() => {
-    // If returning from another page, skip the loading screen entirely.
-    if (typeof window !== 'undefined' && sessionStorage.getItem('vocaloid_unlocked')) {
-      startExperience().then(() => {
-        setUnlocked(true);
-      }).catch(console.error);
-    }
-  }, [startExperience]);
 
   const handleCharacterTrackChange = useCallback(
     async (track: ReturnType<typeof useVocaloidAudio>["activeTrack"]) => {      

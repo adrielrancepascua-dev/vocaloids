@@ -18,7 +18,7 @@ const BRADY_PATH = "M 0 50 L 30 50 Q 35 45 40 50 L 45 50 L 50 40 L 55 10 L 60 70
 function ECGMonitorBase({ theme, color = 'var(--primary-color)', width = '100%', height = '60px' }: ECGMonitorProps) {
   let path = NSR_PATH;
   let duration = 1.2;
-  
+
   if (theme === 'teto') {
     path = TACHY_PATH;
     duration = 0.6; // High energy
@@ -45,10 +45,10 @@ function ECGMonitorBase({ theme, color = 'var(--primary-color)', width = '100%',
              <path d={path} fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </pattern>
         </defs>
-        
+
         {/* We make the rect very wide and animate its X to simulate continuous scrolling */}
-        <motion.rect 
-          x="0" y="0" width="500%" height="100" 
+        <motion.rect
+          x="0" y="0" width="500%" height="100"
           fill={`url(#ecg-pattern-${theme})`}
           animate={{ x: [0, -100] }}
           transition={{ duration, repeat: Infinity, ease: 'linear' }}
@@ -57,7 +57,7 @@ function ECGMonitorBase({ theme, color = 'var(--primary-color)', width = '100%',
 
       {/* Occasional artifacting (glitch) on Neru simulating a bad connection or interference */}
       {theme === 'neru' && (
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-white/20 mix-blend-overlay"
           animate={{ opacity: [0, 0.8, 0, 1, 0, 0] }}
           transition={{ duration: 4, repeat: Infinity, times: [0, 0.05, 0.1, 0.15, 0.2, 1] }}
@@ -68,4 +68,3 @@ function ECGMonitorBase({ theme, color = 'var(--primary-color)', width = '100%',
 }
 
 export const ECGMonitor = memo(ECGMonitorBase);
-

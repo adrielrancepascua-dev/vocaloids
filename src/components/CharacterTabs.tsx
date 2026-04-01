@@ -167,11 +167,11 @@ function CharacterTabsBase({ characterData }: CharacterTabsProps) {
                         transition={{ duration: 1.2, delay: index * 0.1, ease: 'easeOut' }}
                         className="h-full absolute left-0 top-0 overflow-hidden"
                       >
-                        <ECGMonitor 
-                          theme={characterData.theme} 
-                          color={characterData.colors.primary} 
-                          width="1000px" 
-                          height="24px" 
+                        <ECGMonitor
+                          theme={characterData.theme}
+                          color={characterData.colors.primary}
+                          width="1000px"
+                          height="24px"
                         />
                       </motion.div>
                     </div>

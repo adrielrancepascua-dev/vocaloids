@@ -1,18 +1,15 @@
-﻿import Link from 'next/link';
+﻿"use client";
+import Link from 'next/link';
 
 export default function ShopPage() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-white font-inter-tight selection:bg-[#39C5BB] selection:text-black flex flex-col items-center justify-center p-6 text-center">
-      <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-widest mb-6">Shop</h1>
-      <p className="text-zinc-400 max-w-md mx-auto mb-8">
-        This is a fan-curated page. Links to official stores will return soon.
-      </p>
-      <Link 
-        href="/" 
-        className="border border-[#39C5BB] text-[#39C5BB] px-6 py-3 rounded-full text-sm font-bold tracking-widest uppercase hover:bg-[#39C5BB] hover:text-black transition-colors"
-      >
-        Explore songs
+    <div className="min-h-screen bg-zinc-950 text-white font-inter-tight selection:bg-[#39C5BB] pt-24 pb-12 px-6 md:px-12 flex flex-col items-center justify-center text-center">
+      <Link href="/" className="inline-block mb-12 text-sm uppercase tracking-widest text-[#39C5BB] hover:text-white transition-colors">
+         &larr; Return Home
       </Link>
+      <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-6">MERCHANDISE</h1>
+      <p className="text-zinc-400 max-w-lg mb-8 text-lg">This is a non-commercial fan-curated archive. The shop has been indefinitely suspended to preserve the purity of the project.</p>
+      <p className="text-zinc-500 text-sm">Please support official Vocaloid releases and merchandise on their respective platforms.</p>
     </div>
   );
 }

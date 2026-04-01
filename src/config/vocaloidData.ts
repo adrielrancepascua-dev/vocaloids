@@ -85,7 +85,7 @@ export const vocaloidData: Vocaloid[] = [
     songs: [
       { title: "Liar Dancer (Masarada)", playCount: 5000000, year: 2024, slug: "liar-dancer" },
       { title: "Kasane Territory", playCount: 20000000, year: 2010, slug: "kasane-territory" },
-      { title: "Ochame Kinou", playCount: 30000000, year: 2010, slug: "ochame-kinou" }
+      { title: "Machine Love", playCount: 30000000, year: 2010, slug: "machine-love" }
     ],
     audioSrc: "/audio/teto.mp3",
     baseImage: "/images/teto_base.png",
@@ -113,9 +113,9 @@ export const vocaloidData: Vocaloid[] = [
     uiSignature: "Safety Yellow, flip-phone motifs, low-battery icons.",
     theme: "neru",
     songs: [
-      { title: "Stop Nagging Me! (Owata-P)", playCount: 4500000, year: 2008, slug: "stop-nagging-me" },
-      { title: "Gucha Gucha Uruse", playCount: 22000000, year: 2012, slug: "gucha-gucha-uruse" },
-      { title: "Tsumanne?", playCount: 3000000, year: 2009, slug: "tsumanne" }
+      { title: "Flop Era", playCount: 4500000, year: 2008, slug: "flop-era" },
+      { title: "Stop Nagging Me", playCount: 22000000, year: 2012, slug: "stop-nagging-me-2" },
+      { title: "Zako", playCount: 3000000, year: 2009, slug: "zako" }  
     ],
     audioSrc: "/audio/neru.mp3",
     baseImage: "/images/neru_base.png",

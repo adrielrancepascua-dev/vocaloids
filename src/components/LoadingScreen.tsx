@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState, memo } from 'react';
 import { motion } from 'motion/react';
-import { ECGMonitor } from './ECGMonitor';
 
 interface LoadingScreenProps {
   onLoadComplete: () => Promise<void> | void;
@@ -13,9 +12,6 @@ const ASSETS_TO_LOAD = [
   { type: 'placeholder', name: 'Miku Asset', src: '#' },
   { type: 'placeholder', name: 'Teto Asset', src: '#' },
   { type: 'placeholder', name: 'Neru Asset', src: '#' },
-  { type: 'placeholder', name: 'Audio Track 1', src: '#' },
-  { type: 'placeholder', name: 'Audio Track 2', src: '#' },
-  { type: 'placeholder', name: 'Audio Track 3', src: '#' },
 ];
 
 function LoadingScreenBase({ onLoadComplete, onStartExperience }: LoadingScreenProps) {
@@ -112,19 +108,13 @@ function LoadingScreenBase({ onLoadComplete, onStartExperience }: LoadingScreenP
 
         {/* Minimal Progress Bar with Glowing Neon Shadow */}
         <div className="w-full space-y-6">
-<div className="relative h-12 w-full bg-black border border-[#39C5BB]/20 rounded-md overflow-hidden flex items-center shadow-[0_0_15px_rgba(57,197,187,0.15)]">
+          <div className="relative h-12 w-full bg-black border border-[#39C5BB]/20 rounded-md overflow-hidden flex items-center shadow-[0_0_15px_rgba(57,197,187,0.15)]">
             <motion.div
-              className="absolute left-0 top-0 h-full overflow-hidden flex items-center"
+              className="absolute left-0 top-0 h-full overflow-hidden flex items-center bg-[#39C5BB]/20"
               initial={{ width: 0 }}
               animate={{ width: `${progressPercent}%` }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-               <ECGMonitor 
-                 theme="miku" 
-                 color="#39C5BB" 
-                 width="800px" 
-                 height="100%" 
-               />
                <div className="absolute top-0 right-0 w-[4px] h-full bg-[#39C5BB] blur-[2px] opacity-80 shadow-[0_0_10px_#39C5BB]" />
             </motion.div>
           </div>

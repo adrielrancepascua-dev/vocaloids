@@ -1,4 +1,4 @@
-﻿export const trackEvent = (eventName: string, props: Record<string, any> = {}) => {
-  // Console logging for local dev tracking
-  console.log('[Analytics] ' + eventName, props);
+﻿export const trackEvent = (eventName: string, properties?: Record<string, any>) => {
+  // Non-commercial fan site: Tracking intentionally disabled to preserve privacy.
+  console.log(`[Event Tracking Disabled]: ${eventName}`, properties || {});
 };

@@ -38,3 +38,21 @@ export async function fetchSongBySlug(slug: string) {
     { slug }
   );
 }
+export async function fetchRelatedSongs(vocaloidSlug: string, currentSlug: string) {
+  const client = getClient();
+  if (!client) {
+    return mockSongs.filter(s => s.vocaloidSlug === vocaloidSlug && s.slug !== currentSlug).slice(0, 3);
+  }
+
+  return client.fetch(
+    `*[_type == "song" && vocaloid->slug.current == $vocaloidSlug && slug.current != $currentSlug][0...3]{
+      "slug": slug.current,
+      title,
+      description,
+      duration,
+      bpm,
+      "coverImage": coverImage.asset->url
+    }`,
+    { vocaloidSlug, currentSlug }
+  );
+}

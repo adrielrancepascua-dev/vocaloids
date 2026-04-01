@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Script from 'next/script';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { fetchSongBySlug } from '../../../sanity/client';
+import { fetchSongBySlug, fetchRelatedSongs } from '../../../sanity/client';
 import { createSongSchema, createBreadcrumbSchema } from '@/lib/jsonld';
 import { BackButton } from './BackButton';
 
@@ -65,6 +66,8 @@ export default async function SongPage({ params }: Props) {
     notFound();
   }
 
+  const relatedSongs = await fetchRelatedSongs(song.vocaloidSlug, song.slug);
+
   // Generate comprehensive JSON-LD schemas
   const songSchema = createSongSchema(
     song.title,
@@ -120,9 +123,14 @@ export default async function SongPage({ params }: Props) {
               <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-widest text-white mb-2">
                 {song.title}
               </h1>
-              <p className="text-xl text-[#39C5BB] font-mono tracking-wider">
+              <Link 
+                href={`/character/${song.vocaloidSlug}`} 
+                className="text-xl text-[#39C5BB] font-mono tracking-wider hover:text-white transition-colors flex items-center gap-2 group w-fit"
+                title={`View ${song.vocaloidName} profile`}
+              >
                 // {song.vocaloidName}
-              </p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-10px] group-hover:translate-x-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </Link>
             </div>
 
             <p className="text-zinc-300 text-lg leading-relaxed mb-8 italic border-l-2 border-[#39C5BB] pl-4">
@@ -168,6 +176,38 @@ export default async function SongPage({ params }: Props) {
             )}
           </div>
         </article>
+
+        {/* Related Songs Block */}
+        {relatedSongs && relatedSongs.length > 0 && (
+          <section className="max-w-4xl mx-auto mt-16 pt-12 border-t border-white/10">
+            <h2 className="text-2xl font-bold uppercase tracking-widest text-[#39C5BB] mb-8">
+              More by {song.vocaloidName}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {relatedSongs.map((relatedSong: any) => (
+                <Link key={relatedSong.slug} href={`/song/${relatedSong.slug}`} className="group block">
+                  <div className="bg-zinc-900/50 rounded-xl overflow-hidden border border-white/5 transition-all duration-300 hover:border-[#39C5BB]/50 hover:bg-zinc-800/80">
+                    <div className="relative h-40 w-full overflow-hidden">
+                      <Image 
+                        src={relatedSong.coverImage || (song.coverImage?.startsWith('http') ? song.coverImage : `${baseUrl}${song.coverImage}`)} 
+                        alt={relatedSong.title} 
+                        fill 
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-bold text-white mb-1 group-hover:text-[#39C5BB] transition-colors line-clamp-1">{relatedSong.title}</h3>
+                      <p className="text-zinc-400 text-xs font-mono mb-2">bpm {relatedSong.bpm || 'N/A'} | {relatedSong.duration}</p>
+                      <p className="text-zinc-500 text-xs line-clamp-2">{relatedSong.description}</p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </>
   );

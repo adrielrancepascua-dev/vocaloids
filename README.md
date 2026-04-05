@@ -4,8 +4,6 @@ This template provides a minimal setup to get React working in Vite with HMR and
 
 Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
 ## React Compiler
 
@@ -71,3 +69,33 @@ export default defineConfig([
   },
 ])
 ```
+
+This workspace is a Next.js TypeScript site for showcasing Vocaloid-style characters and songs.
+
+Key details
+- Framework: Next.js (App Router) with TypeScript
+- Purpose: site for characters, songs, shop, and audio experiences
+- Major folders:
+  - `src/app/` — application routes and pages
+  - `src/components/` — reusable React components (audio visualizer, embeds, UI)
+  - `src/assets/` and `public/` — images, audio, and static files
+  - `src/lib/`, `src/hooks/`, `src/context/` — utilities and app state
+  - `src/sanity/` — Sanity client and schemas for content
+
+Development
+- Install: `npm install`
+- Dev server: `npm run dev`
+- Build: `npm run build`
+
+Notes
+- This project includes a web worker for audio math and several client components that depend on browser APIs.
+- See `WORKSPACE_GUIDE.md` and `ARCHITECTURE.md` for more architecture and conventions.
+
+Contributing
+- Open a PR against the repository; follow existing code style and TypeScript settings.
+
+Repository
+- Remote: https://github.com/adrielrancepascua-dev/vocaloids
+
+Contact
+- Maintainer: adrielrancepascua-dev
